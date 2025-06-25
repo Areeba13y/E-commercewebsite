@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details – MyStore</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { width: 100%; height: auto; }
+
+    /* HEADER */
+    header {
+      padding: 20px 40px;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0077cc;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .search-bar input {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+
+    /* MAIN PRODUCT SECTION */
+    .product-container {
+      display: flex;
+      padding: 40px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .product-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .product-info {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .product-info h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 20px;
+      color: #00bfff;
+      margin: 10px 0;
+    }
+
+    .description {
+      margin: 20px 0;
+    }
+
+    .size-dropdown {
+      margin: 20px 0;
+    }
+
+    select {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    .add-to-cart {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .add-to-cart:hover {
+      background-color: #0077cc;
+    }
+
+    /* REVIEWS / RELATED PRODUCTS */
+    .related {
+      padding: 40px;
+      background: #f9f9f9;
+    }
+
+    .related h2 {
+      margin-bottom: 20px;
+    }
+
+    .related-items {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .related-card {
+      width: 200px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .related-card:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: #eee;
+      padding: 30px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      margin: 10px;
+    }
+
+    .footer-section h4 {
+      color: #00bfff;
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: #ccc;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .bottom {
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">MyStore</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search products..." />
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PRODUCT SECTION -->
+  <section class="product-container">
+    <div class="product-image">
+      <img src="https://via.placeholder.com/400x400" alt="Product Image" />
+    </div>
+    <div class="product-info">
+      <h1>Stylish Hoodie</h1>
+      <p class="price">$39.99</p>
+      <p class="description">
+        This high-quality hoodie is made from soft cotton and designed for ultimate comfort and style.
+      </p>
+
+      <div class="size-dropdown">
+        <label for="size">Choose Size:</label>
+        <select id="size">
+          <option value="">Select</option>
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          <option value="XL">Extra Large</option>
+        </select>
+      </div>
+
+      <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related">
+    <h2>Related Products</h2>
+    <div class="related-items">
+      <div class="related-card">
+        <img src="https://via.placeholder.com/200x200" alt="Product" />
+        <p>Basic Tee</p>
+        <p>$19.99</p>
+      </div>
+      <div class="related-card">
+        <img src="https://via.placeholder.com/200x200" alt="Product" />
+        <p>Winter Jacket</p>
+        <p>$59.99</p>
+      </div>
+      <div class="related-card">
+        <img src="https://via.placeholder.com/200x200" alt="Product" />
+        <p>Denim Jeans</p>
+        <p>$29.99</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-section">
+      <h4>About</h4>
+      <a href="#">Company Info</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="footer-section">
+      <h4>Support</h4>
+      <a href="#">Help</a>
+      <a href="#">Returns</a>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </div>
+    <div class="bottom">
+      &copy; 2025 MyStore. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS Interactivity -->
+  <script>
+    function addToCart() {
+      const size = document.getElementById("size").value;
+      if (!size) {
+        alert("Please select a size before adding to cart.");
+      } else {
+        alert("Added to cart: Hoodie (Size: " + size + ")");
+      }
+    }
+  </script>
+</body>
+</html>
