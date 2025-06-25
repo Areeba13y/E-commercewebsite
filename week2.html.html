@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Week 2 – Home & Product Listing</title>
+  <style>
+    /* RESET & BASE */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.5;
+      background-color: #fff;
+      color: #333;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { width: 100%; height: auto; display: block; }
+
+    /* HEADER */
+    header {
+      padding: 20px 40px;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0077cc;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .search-bar input {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: url('https://via.placeholder.com/1200x400?text=Banner+Image') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-content {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 10px;
+    }
+
+    .hero-content h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #00bfff;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero-content button:hover {
+      background-color: #0077cc;
+    }
+
+    /* FEATURED CATEGORIES */
+    .featured {
+      padding: 40px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .featured h2 {
+      margin-bottom: 20px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .category {
+      flex: 1;
+      min-width: 250px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+    }
+
+    /* PRODUCT LISTING */
+    .products {
+      padding: 40px;
+    }
+
+    .products h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .product-card p {
+      color: #0077cc;
+      font-weight: bold;
+    }
+
+    .product-card button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #00bfff;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .product-card button:hover {
+      background: #0077cc;
+    }
+
+    /* PAGINATION */
+    .pagination {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .pagination button {
+      margin: 0 10px;
+      padding: 10px 16px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+    }
+
+    .pagination button:hover {
+      background: #00bfff;
+      color: white;
+      border-color: #00bfff;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: #eee;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-section {
+      margin: 10px;
+    }
+
+    footer .footer-section h4 {
+      color: #00bfff;
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #ccc;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    footer .bottom {
+      text-align: center;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      header, .hero-content, .featured, .products {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">MyStore</div>
+    <div class="search-bar"><input type="text" placeholder="Search..." /></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to MyStore</h1>
+      <p>Your one-stop shop for everything awesome!</p>
+      <button>Shop Now</button>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="featured">
+    <h2>Featured Categories</h2>
+    <div class="categories">
+      <div class="category">Electronics</div>
+      <div class="category">Clothing</div>
+      <div class="category">Home & Kitchen</div>
+      <div class="category">Accessories</div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products">
+    <h2>All Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x180" alt="Product 1">
+        <h3>Product 1</h3>
+        <p>$19.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x180" alt="Product 2">
+        <h3>Product 2</h3>
+        <p>$24.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x180" alt="Product 3">
+        <h3>Product 3</h3>
+        <p>$12.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x180" alt="Product 4">
+        <h3>Product 4</h3>
+        <p>$34.99</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button>Prev</button>
+      <button>Next</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-section">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="footer-section">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Returns</a>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="bottom">&copy; 2025 MyStore. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
